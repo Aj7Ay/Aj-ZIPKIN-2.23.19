@@ -77,7 +77,7 @@ USER ${USER}
 FROM base-server as zipkin-slim
 LABEL org.opencontainers.image.description="Zipkin slim distribution on OpenJDK and Alpine Linux"
 
-#COPY --from=install --chown=${USER} /install/zipkin-slim/ /zipkin/
+COPY --from=install --chown=${USER} /install/zipkin-slim/ /zipkin/
 
 EXPOSE 9411
 
@@ -87,7 +87,7 @@ LABEL org.opencontainers.image.description="Zipkin full distribution on OpenJDK 
 # 3rd party modules like zipkin-aws will apply profile settings with this
 ENV MODULE_OPTS=
 
-#COPY --from=install --chown=${USER} /install/zipkin/ /zipkin/
+COPY --from=install --chown=${USER} /install/zipkin/ /zipkin/
 
 # Zipkin's full distribution includes Scribe support (albeit disabled)
 EXPOSE 9410 9411
