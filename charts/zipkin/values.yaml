@@ -13,7 +13,7 @@
 replicaCount: 1
 
 image:
-  repository: openzipkin/zipkin-slim
+  repository: sevenajay/zipkin-2.23
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
