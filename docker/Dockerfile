@@ -47,6 +47,7 @@ ARG version=master
 ENV VERSION=$version
 ENV MAVEN_PROJECT_BASEDIR=/code
 RUN  ["chmod", "+x", "/code/build-bin/maven/maven_build_or_unjar"]
+RUN   ["chmod", "+x", "/code/build-bin/maven/maven_unjar"]
 RUN /code/build-bin/maven/maven_build_or_unjar io.zipkin zipkin-server ${VERSION} exec && \
     mv zipkin-server zipkin && \
     /code/build-bin/maven/maven_build_or_unjar io.zipkin zipkin-server ${VERSION} slim && \
