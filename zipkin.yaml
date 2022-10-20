@@ -51,3 +51,30 @@ spec:
           requests:
             cpu: "0"
             memory: "0"
+            
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/path:   /prometheus
+    prometheus.io/port:   '9411'
+    fabric8.io/app-menu: management
+  labels:
+    provider: "fabric8"
+    project: "${project.artifactId}"
+    version: "${project.version}"
+    group: "io.fabric8.zipkin"
+  name: "zipkin"
+spec:
+  ports:
+  - port: 80
+    protocol: "TCP"
+    targetPort: 9411
+  selector:
+    project: "zipkin"
+    provider: "fabric8"
+    group: "io.fabric8.zipkin"
+  type: "LoadBalancer"
+
